@@ -1,0 +1,23 @@
+@charset "utf-8";
+
+.container {
+    position: relative;
+    height: 100vh;
+    background: url(images/bg.jpg) no-repeat center center / cover;
+}
+
+.stage {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+}
+
+.stage span {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: #dda043;
+    border-radius: 50%;
+    filter: blur(10px);
+    z-index: 1;
+}
