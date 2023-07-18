@@ -1,5 +1,5 @@
 
-const Light_count = 30;                             //光の数を設定
+const Light_count = 20;                             //光の数を設定
 const stage = document.querySelector(".stage");     //stageクラスを持つ要素を取得
 
 //100msec毎にLightを作成するループ
@@ -7,7 +7,7 @@ for (let i = 0; i < Light_count; i++) {
     setTimeout(() => {
         //createLight関数を呼び出して、Lightを作成
         createLight(i);
-    }, 100);
+    }, 2000);
 }
 
 //Lightを作成する関数
@@ -36,7 +36,7 @@ function createLight(i) {
     //(1) span要素を下から上方向に移動
     tl.to(span, {
         y: -stage.offsetHeight - span.offsetHeight, // 要素を上方向に移動させ、画面外に移動させる
-        duration: gsap.utils.random(3, 10, .1), // 移動の持続時間をランダムに設定
+        duration: gsap.utils.random(6, 20, .1), // 移動の持続時間をランダムに設定
         ease: Power0.easeNone // イージング関数を設定（等速）
     });
     //(2) span要素をゆらゆら左右に揺らす
