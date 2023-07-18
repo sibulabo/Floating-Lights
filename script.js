@@ -20,7 +20,7 @@ function createLight(i) {
         left: gsap.utils.random(0, stage.offsetWidth),                      //spanの水平位置（左右）をランダムに設定
         top: gsap.utils.random(stage.offsetHeight / 2, stage.offsetHeight), //spanの垂直位置（上下）を下半分の範囲でランダムに設定
         scale: gsap.utils.random(.8, 2, .1),                              //spanの拡大縮小率をランダムに設定
-        opacity: gsap.utils.random(.1, .8, .1)                              //spanの透明度をランダムに設定
+        opacity: gsap.utils.random(.1, 1, .1)                              //spanの透明度をランダムに設定
     });
 
     //タイムライン生成
@@ -40,18 +40,12 @@ function createLight(i) {
         ease: Power0.easeNone // イージング関数を設定（等速）
     });
     //(2) span要素をゆらゆら左右に揺らす
-    //  最初は、-30～30px(5刻み)の範囲で左右に 1秒かけて移動。（"<":直前のトゥイーンの開始時に発動）
-    tl.to(span, {
-        x: gsap.utils.random(-30, 30, 5),   //要素を左右にランダムに振動させる
-        duration: 1,                        //振動の持続時間を1秒に設定
-        ease: Power1.out                    //イージング関数を設定（アウトクォート）
-    }, "<");
-    //  2～5回目は、-30～30px(5px)の範囲で左右に 2～4秒かけて移動。（">":直前のトゥイーンの終了時に発動）
-    for (var j = 0; j < 3; j++) {
+    //  -30～30px(5px)の範囲で左右に 2～4秒かけて移動。（"<":直後、">":直前のトゥイーンの終了時に発動）
+    for (var j = 0; j < 5; j++) {
         tl.to(span, {
             x: gsap.utils.random(-30, 30, 5),       // 要素を左右にランダムに振動させる
             duration: gsap.utils.random(2, 4, .5)   // 振動の持続時間をランダムに設定
-        }, ">");
+        }, (j==0? "<": ">"));
     }
 
     tl.play();  //アニメーションを再生
